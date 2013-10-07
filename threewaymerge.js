@@ -159,19 +159,19 @@ define(function(require, exports, module) {
              * [[DIFF_DELETE, 'Hello'], [DIFF_INSERT, 'Goodbye'], [DIFF_EQUAL, ' world.']]
              * which means: delete 'Hello', add 'Goodbye' and keep ' world.'
              */
-            DIFF_DELETE : exports.DIFF_DELETE,
+            DIFF_DELETE : dmplib.DIFF_DELETE,
             /**
              * The data structure representing a diff is an array of tuples:
              * [[DIFF_DELETE, 'Hello'], [DIFF_INSERT, 'Goodbye'], [DIFF_EQUAL, ' world.']]
              * which means: delete 'Hello', add 'Goodbye' and keep ' world.'
              */
-            DIFF_INSERT : exports.DIFF_INSERT,
+            DIFF_INSERT : dmplib.DIFF_INSERT,
             /**
              * The data structure representing a diff is an array of tuples:
              * [[DIFF_DELETE, 'Hello'], [DIFF_INSERT, 'Goodbye'], [DIFF_EQUAL, ' world.']]
              * which means: delete 'Hello', add 'Goodbye' and keep ' world.'
              */
-            DIFF_EQUAL : exports.DIFF_EQUAL,
+            DIFF_EQUAL : dmplib.DIFF_EQUAL,
             
             /**
              * Merges two versions of the same document and updates the ace
