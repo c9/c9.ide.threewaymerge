@@ -1,4 +1,4 @@
-if (typeof process !== "undefined") {
+if (typeof define === "undefined") {
     require("amd-loader");
 }
 
@@ -6,7 +6,7 @@ define(function(require, exports, module) {
 "use strict";
 
 var Document = require("ace/lib/ace/document").Document;
-var merge = require("./three_way_merge");
+var merge = require("./threewaymerge");
 var assert = require("assert");
 
 module.exports = {
