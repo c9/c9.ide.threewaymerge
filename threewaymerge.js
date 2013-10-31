@@ -172,7 +172,13 @@ define(function(require, exports, module) {
              * which means: delete 'Hello', add 'Goodbye' and keep ' world.'
              */
             DIFF_EQUAL : dmplib.DIFF_EQUAL,
-            
+
+            /**
+             * Patch an ace document from old value to nw value performing
+              * only the required insertion/deletion operations
+             */
+            patchAce: patchAce,
+
             /**
              * Merges two versions of the same document and updates the ace
              * instance to represent the changes. If conflicts occur during the
