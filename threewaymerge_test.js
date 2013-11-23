@@ -11,7 +11,7 @@ require(["lib/architect/architect", "lib/chai/chai", "/vfs-root", "events", "ace
     var ev = new Emitter();
     // var merge = require("./threewaymerge");
 
-    architect.resolveConfig([
+    expect.setupArchitectTest([
         {
             packagePath : "plugins/c9.core/c9",
             startdate   : new Date(),
@@ -41,7 +41,7 @@ require(["lib/architect/architect", "lib/chai/chai", "/vfs-root", "events", "ace
         //Mock Plugins
         {
             consumes : ["apf", "ui", "Plugin"],
-            provides : ["auth.bootstrap"],
+            provides : ["auth.bootstrap", "proc"],
             setup    : expect.html.mocked
         },
         {
@@ -49,11 +49,7 @@ require(["lib/architect/architect", "lib/chai/chai", "/vfs-root", "events", "ace
             provides : [],
             setup    : main
         }
-    ], function (err, config) {
-        if (err) throw err;
-        var app = architect.createApp(config);
-        app.on("service", function(name, plugin){ plugin.name = name; });
-    });
+    ], architect);
     
     function main(options, imports, register) {
         var merge = imports.threewaymerge;
