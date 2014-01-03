@@ -42,7 +42,7 @@ require(["lib/architect/architect", "lib/chai/chai", "/vfs-root", "events", "ace
         //Mock Plugins
         {
             consumes : ["apf", "ui", "Plugin"],
-            provides : ["auth.bootstrap", "info", "proc"],
+            provides : ["auth.bootstrap", "info", "proc", "dialog.error"],
             setup    : expect.html.mocked
         },
         {
