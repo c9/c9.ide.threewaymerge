@@ -26,6 +26,12 @@ define(function(require, exports, module) {
         }
         
         function patchAce(oldValue, newValue, doc) {
+            if (typeof doc === "undefined") {
+                doc = newValue;
+                newValue = oldValue;
+                oldValue = doc.getValue();
+            }
+                
             var dmp = new dmplib.diff_match_patch();
             var d = dmp.diff_main(oldValue, newValue, true);
         
@@ -51,7 +57,7 @@ define(function(require, exports, module) {
                     i += text.length;
                 }
             });
-        };
+        }
         
         function diff3(a, o, b) {
             var mapping = linesToChars(a, o, b);
@@ -95,7 +101,7 @@ define(function(require, exports, module) {
             }
         
             return lines.join("");
-        };
+        }
         
         function linesToChars(text1, text2, text3) {
           var lineArray = [];  // e.g. lineArray[4] == 'Hello\n'
@@ -174,7 +180,7 @@ define(function(require, exports, module) {
             DIFF_EQUAL : dmplib.DIFF_EQUAL,
 
             /**
-             * Patch an ace document from old value to nw value performing
+             * Patch an ace document from old value to new value performing
               * only the required insertion/deletion operations
              */
             patchAce: patchAce,
