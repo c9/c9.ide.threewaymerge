@@ -6,10 +6,10 @@ define(function(require, exports, module) {
     return main;
 
     function main(options, imports, register) {
-        var Plugin   = imports.Plugin;
+        var Plugin = imports.Plugin;
         
-        var Range  = require("ace/range").Range;
-        var diff   = require("./diff");
+        var Range = require("ace/range").Range;
+        var diff = require("./diff");
         var dmplib = require("./diff_match_patch_amd");
         
         /***** Initialization *****/
@@ -165,19 +165,19 @@ define(function(require, exports, module) {
              * [[DIFF_DELETE, 'Hello'], [DIFF_INSERT, 'Goodbye'], [DIFF_EQUAL, ' world.']]
              * which means: delete 'Hello', add 'Goodbye' and keep ' world.'
              */
-            DIFF_DELETE : dmplib.DIFF_DELETE,
+            DIFF_DELETE: dmplib.DIFF_DELETE,
             /**
              * The data structure representing a diff is an array of tuples:
              * [[DIFF_DELETE, 'Hello'], [DIFF_INSERT, 'Goodbye'], [DIFF_EQUAL, ' world.']]
              * which means: delete 'Hello', add 'Goodbye' and keep ' world.'
              */
-            DIFF_INSERT : dmplib.DIFF_INSERT,
+            DIFF_INSERT: dmplib.DIFF_INSERT,
             /**
              * The data structure representing a diff is an array of tuples:
              * [[DIFF_DELETE, 'Hello'], [DIFF_INSERT, 'Goodbye'], [DIFF_EQUAL, ' world.']]
              * which means: delete 'Hello', add 'Goodbye' and keep ' world.'
              */
-            DIFF_EQUAL : dmplib.DIFF_EQUAL,
+            DIFF_EQUAL: dmplib.DIFF_EQUAL,
 
             /**
              * Patch an ace document from old value to new value performing
@@ -194,7 +194,7 @@ define(function(require, exports, module) {
              * @param {ace.Document} oursDocument  The ace document that represents the docment.
              * @returns {String} the merged version
              */
-            merge : merge,
+            merge: merge,
             
             /**
              * 
@@ -205,7 +205,7 @@ define(function(require, exports, module) {
              * Class containing the diff, match and patch methods.
              * @constructor
              */
-            DiffMatchPatch : dmplib.diff_match_patch
+            DiffMatchPatch: dmplib.diff_match_patch
         });
         
         register(null, {

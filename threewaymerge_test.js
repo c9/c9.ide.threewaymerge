@@ -13,17 +13,17 @@ require(["lib/architect/architect", "lib/chai/chai", "/vfs-root", "events", "ace
 
     expect.setupArchitectTest([
         {
-            packagePath : "plugins/c9.core/c9",
-            startdate   : new Date(),
-            debug       : true,
-            hosted      : true,
-            davPrefix   : "/",
-            local       : false,
-            projectName : "Test Project"
+            packagePath: "plugins/c9.core/c9",
+            startdate: new Date(),
+            debug: true,
+            hosted: true,
+            davPrefix: "/",
+            local: false,
+            projectName: "Test Project"
         },
         {
-            packagePath : "plugins/c9.ide.ui/ui",
-            staticPrefix : "plugins/c9.ide.ui"
+            packagePath: "plugins/c9.ide.ui/ui",
+            staticPrefix: "plugins/c9.ide.ui"
         },
         "plugins/c9.ide.ui/lib_apf",
         {
@@ -41,20 +41,20 @@ require(["lib/architect/architect", "lib/chai/chai", "/vfs-root", "events", "ace
         "plugins/c9.ide.threewaymerge/threewaymerge",
         //Mock Plugins
         {
-            consumes : ["apf", "ui", "Plugin"],
-            provides : ["auth.bootstrap", "info", "proc", "dialog.error"],
-            setup    : expect.html.mocked
+            consumes: ["apf", "ui", "Plugin"],
+            provides: ["auth.bootstrap", "info", "proc", "dialog.error"],
+            setup: expect.html.mocked
         },
         {
-            consumes : ["threewaymerge", "fs"],
-            provides : [],
-            setup    : main
+            consumes: ["threewaymerge", "fs"],
+            provides: [],
+            setup: main
         }
     ], architect);
     
     function main(options, imports, register) {
         var merge = imports.threewaymerge;
-        var fs    = imports.fs;
+        var fs = imports.fs;
 
         describe('threewaymerge', function() {
             it("should patch remote changes changes", function(done) {
