@@ -30,6 +30,7 @@ define(function(require, exports, module) {
                 doc = newValue;
                 newValue = oldValue;
                 oldValue = doc.getValue();
+                newValue = oldValue.split(/\r\n|\r|\n/).join(doc.getNewLineCharacter());
             }
                 
             var dmp = new dmplib.diff_match_patch();
