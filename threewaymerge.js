@@ -25,15 +25,18 @@ define(function(require, exports, module) {
             return merged;
         }
         
-        function patchAce(oldValue, newValue, doc) {
+        function patchAce(oldValue, newValue, doc, maxTime) {
             if (typeof doc === "undefined") {
                 doc = newValue;
                 newValue = oldValue;
                 oldValue = doc.getValue();
-                newValue = oldValue.split(/\r\n|\r|\n/).join(doc.getNewLineCharacter());
             }
-                
+            newValue = newValue.replace(/\r\n|\r|\n/g, doc.getNewLineCharacter());
+            oldValue = oldValue.replace(/\r\n|\r|\n/g, doc.getNewLineCharacter());
+            
             var dmp = new dmplib.diff_match_patch();
+            if (maxTime)
+                dmp.Diff_Timeout = maxTime;
             var d = dmp.diff_main(oldValue, newValue, true);
         
             if (!d.length)
