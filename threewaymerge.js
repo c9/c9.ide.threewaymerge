@@ -25,7 +25,7 @@ define(function(require, exports, module) {
             return merged;
         }
         
-        function patchAce(oldValue, newValue, doc, maxTime) {
+        function patchAce(oldValue, newValue, doc, options) {
             if (typeof doc === "undefined") {
                 doc = newValue;
                 newValue = oldValue;
@@ -35,14 +35,15 @@ define(function(require, exports, module) {
             oldValue = oldValue.replace(/\r\n|\r|\n/g, doc.getNewLineCharacter());
             
             var dmp = new dmplib.diff_match_patch();
-            if (maxTime)
-                dmp.Diff_Timeout = maxTime;
+            if (options && options.method == "quick") {
+                dmp.Diff_Timeout = 0.2;
+            }
             var d = dmp.diff_main(oldValue, newValue, true);
         
             if (!d.length)
                 return;
         
-            var i = 0;
+            var i = options && options.offset || 0;
             d.forEach(function(chunk) {
                 var op = chunk[0];
                 var text = chunk[1];
