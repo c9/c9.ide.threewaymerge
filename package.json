@@ -9,14 +9,12 @@
         "url": "http://github.com/c9/c9.ide.threewaymerge.git"
     },
     "plugins": {
-        "plugin": {
-            "threewaymerge": {}
-        }
+        "threewaymerge": {}
     },
     "categories": [
         "core"
     ],
     "licenses": [
-        ""
+        "MIT"
     ]
 }
