@@ -99,7 +99,7 @@ define(function(require, exports, module) {
                             b.replace(/\n?$/, "\n"),
                             ">>>>>>>>> local version"
                         );
-                        if (i !== merger.length-1)
+                        if (i !== merger.length - 1)
                              lines.push("\n");
                     }
                 }
@@ -156,7 +156,7 @@ define(function(require, exports, module) {
           var chars1 = diff_linesToCharsMunge_(text1);
           var chars2 = diff_linesToCharsMunge_(text2);
           var chars3 = diff_linesToCharsMunge_(text3);
-          return {chars1: chars1, chars2: chars2, chars3: chars3, lineArray: lineArray};
+          return { chars1: chars1, chars2: chars2, chars3: chars3, lineArray: lineArray };
         }
         
         /***** Register and define API *****/
@@ -204,7 +204,7 @@ define(function(require, exports, module) {
             /**
              * 
              */
-            diff3 : diff3,
+            diff3: diff3,
             
             /**
              * Class containing the diff, match and patch methods.

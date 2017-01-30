@@ -90,9 +90,9 @@ var Diff = module.exports = {
             }
         }
 
-        candidates = [{file1index: -1,
+        candidates = [{ file1index: -1,
                        file2index: -1,
-                       chain: null}];
+                       chain: null }];
 
         for (i = 0; i < file1.length; i++) {
             line = file1[i];
@@ -112,9 +112,9 @@ var Diff = module.exports = {
                 }
 
                 if (s < candidates.length) {
-                    newCandidate = {file1index: i,
+                    newCandidate = { file1index: i,
                                     file2index: j,
-                                    chain: candidates[s]};
+                                    chain: candidates[s] };
                     if (r == candidates.length) {
                         candidates.push(c);
                     } else {
@@ -145,13 +145,13 @@ var Diff = module.exports = {
         var result = [];
         var tail1 = file1.length;
         var tail2 = file2.length;
-        var common = {common: []};
+        var common = { common: []};
 
         function processCommon() {
             if (common.common.length) {
                 common.common.reverse();
                 result.push(common);
-                common = {common: []};
+                common = { common: []};
             }
         }
 
@@ -159,7 +159,7 @@ var Diff = module.exports = {
              candidate !== null;
              candidate = candidate.chain)
         {
-            var different = {file1: [], file2: []};
+            var different = { file1: [], file2: []};
 
             while (--tail1 > candidate.file1index) {
                 different.file1.push(file1[tail1]);
@@ -200,9 +200,9 @@ var Diff = module.exports = {
             for (var i = 0; i < length; i++) {
                 chunk.push(file[offset + i]);
             }
-            return {offset: offset,
+            return { offset: offset,
                     length: length,
-                    chunk: chunk};
+                    chunk: chunk };
         }
 
         for (var candidate = Diff.longest_common_subsequence(file1, file2);
@@ -215,12 +215,12 @@ var Diff = module.exports = {
             tail2 = candidate.file2index;
 
             if (mismatchLength1 || mismatchLength2) {
-                result.push({file1: chunkDescription(file1,
+                result.push({ file1: chunkDescription(file1,
                                                      candidate.file1index + 1,
                                                      mismatchLength1),
                              file2: chunkDescription(file2,
                                                      candidate.file2index + 1,
-                                                     mismatchLength2)});
+                                                     mismatchLength2) });
             }
         }
 
@@ -235,9 +235,9 @@ var Diff = module.exports = {
 	var newpatch = [];
 	for (var i = 0; i < patch.length; i++) {
 	    var chunk = patch[i];
-	    newpatch.push({file1: {offset: chunk.file1.offset,
-				   length: chunk.file1.length},
-			   file2: {chunk: chunk.file2.chunk}});
+	    newpatch.push({ file1: { offset: chunk.file1.offset,
+				   length: chunk.file1.length },
+			   file2: { chunk: chunk.file2.chunk }});
 	}
 	return newpatch;
     },
@@ -303,7 +303,7 @@ var Diff = module.exports = {
             tail2 = candidate.file2index;
 
             if (mismatchLength1 || mismatchLength2) {
-                result.push({file1: [tail1 + 1, mismatchLength1],
+                result.push({ file1: [tail1 + 1, mismatchLength1],
                              file2: [tail2 + 1, mismatchLength2]});
             }
         }
@@ -396,9 +396,9 @@ var Diff = module.exports = {
 		var bLhs = regions[2][0] + (regionLhs - regions[2][2]);
 		var bRhs = regions[2][1] + (regionRhs - regions[2][3]);
                 result.push([-1,
-			     aLhs,      aRhs      - aLhs,
+			     aLhs, aRhs - aLhs,
 			     regionLhs, regionRhs - regionLhs,
-			     bLhs,      bRhs      - bLhs]);
+			     bLhs, bRhs - bLhs]);
             }
             commonOffset = regionRhs;
         }
@@ -419,7 +419,7 @@ var Diff = module.exports = {
         var okLines = [];
         function flushOk() {
             if (okLines.length) {
-                result.push({ok: okLines});
+                result.push({ ok: okLines });
             }
             okLines = [];
         }
@@ -447,12 +447,12 @@ var Diff = module.exports = {
                     pushOk(files[0].slice(x[1], x[1] + x[2]));
                 } else {
                     flushOk();
-                    result.push({conflict: {a: a.slice(x[1], x[1] + x[2]),
+                    result.push({ conflict: { a: a.slice(x[1], x[1] + x[2]),
                                             aIndex: x[1],
                                             o: o.slice(x[3], x[3] + x[4]),
                                             oIndex: x[3],
                                             b: b.slice(x[5], x[5] + x[6]),
-                                            bIndex: x[5]}});
+                                            bIndex: x[5] }});
                 }
             } else {
                 pushOk(files[side].slice(x[1], x[1] + x[2]));

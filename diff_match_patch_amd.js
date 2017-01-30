@@ -492,7 +492,7 @@ diff_match_patch.prototype.diff_linesToChars_ = function(text1, text2) {
 
   var chars1 = diff_linesToCharsMunge_(text1);
   var chars2 = diff_linesToCharsMunge_(text2);
-  return {chars1: chars1, chars2: chars2, lineArray: lineArray};
+  return { chars1: chars1, chars2: chars2, lineArray: lineArray };
 };
 
 
